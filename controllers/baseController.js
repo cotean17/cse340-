@@ -6,3 +6,4 @@ const buildHome = async function (req, res) {
 }
 
 module.exports = { buildHome }
+

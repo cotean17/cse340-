@@ -1,0 +1,21 @@
+<%- include("../partials/head") %>
+<body>
+  <%- include("../partials/header") %>
+  <%- include("../partials/nav") %>
+
+  <main>
+    <h1><%= title %></h1>
+
+    <% if (grid) { %>
+      <%- grid %>
+    <% } else { %>
+      <p>Vehicle details not available.</p>
+    <% } %>
+  </main>
+  <section class="vehicle-wrapper">
+    <%- grid %>
+  </section>
+  
+
+  <%- include("../partials/footer") %>
+</body>

@@ -81,3 +81,27 @@ main {
     font-size: 1.2rem;
   }
 }
+.vehicle-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vehicle-detail img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .vehicle-detail {
+    flex-direction: row;
+  }
+
+  .vehicle-detail img {
+    max-width: 50%;
+  }
+
+  .vehicle-detail div {
+    flex: 1;
+  }
+}
