@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+  <% include ./head.ejs %>
+  <body>
+    <% include ./header.ejs %>
+    <% include ./nav.ejs %>
+    <main>
+      <h2>Error</h2>
+      <p><%= message || "Something went wrong." %></p>
+    </main>
+    <% include ./footer.ejs %>
+  </body>
+</html>

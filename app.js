@@ -1,29 +1,28 @@
-const express = require("express")
-const path = require("path")
-const baseRoute = require("./routes/baseRoute")
-const app = express()
+const express = require("express");
+const path = require("path");
+const baseRoutes = require("./routes/baseRoute");
 
-require("dotenv").config()
+require("dotenv").config();
 
-const port = process.env.PORT || 3000
+const app = express();
+const port = process.env.PORT || 5000;
 
-app.set("view engine", "ejs")
-app.set("views", path.join(__dirname, "views"))
-app.use(express.static(path.join(__dirname, "public")))
-app.use(express.urlencoded({ extended: true }))
+// Set view engine
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+// Serve static files
+app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
-app.use("/", baseRoute)
+app.use("/", baseRoutes);
 
-// 404
+// 404 error page
 app.use((req, res) => {
-  res.status(404).render("error", {
-    title: "Page Not Found",
-    message: "The page you are looking for doesn't exist.",
-  })
-})
+  res.status(404).render("partials/error", { title: "Page Not Found" });
+});
 
 // Start server
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`)
-})
+  console.log(`Server running on http://localhost:${port}`);
+});

@@ -1,20 +1,83 @@
+/* Mobile-first styles */
+
 body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f3f3f3;
-  }
-  nav {
-    background-color: #333;
-    color: white;
-    padding: 1rem;
-  }
-  nav a {
-    color: white;
-    margin-right: 1rem;
-    text-decoration: none;
-  }
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+header,
+footer {
+  background-color: #004d99;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+nav {
+  background-color: #e0e0e0;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #004d99;
+  font-weight: bold;
+}
+
+main {
+  padding: 1rem;
+  text-align: center;
+}
+
+.car-showcase {
+  margin-top: 2rem;
+}
+
+.car-showcase img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Media Query for larger screens */
+@media screen and (min-width: 768px) {
   main {
-    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
   }
-  
+
+  nav ul {
+    display: flex;
+    justify-content: center;
+  }
+
+  nav li {
+    margin: 0 20px;
+  }
+
+  .car-showcase {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .car-showcase p {
+    font-size: 1.2rem;
+  }
+}
