@@ -2,11 +2,18 @@
 <body>
   <%- include("../partials/header") %>
   <%- include("../partials/nav") %>
+
   <main>
     <h1><%= title %></h1>
-    <%- grid %>
+    
+    <% if (grid) { %>
+      <%- grid %>
+    <% } else { %>
+      <p>Sorry, no vehicles could be found for this classification.</p>
+    <% } %>
   </main>
+
   <%- include("../partials/footer") %>
 </body>
 
-  
+

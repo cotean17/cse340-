@@ -17,25 +17,24 @@ async function getNav() {
   }
 }
 
-// Build vehicle detail
+// Build vehicle detail view
 async function buildVehicleDetail(vehicle) {
-  let detail = `
+  return `
     <div class="vehicle-detail">
       <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}">
       <div>
         <h2>${vehicle.inv_make} ${vehicle.inv_model}</h2>
         <p><strong>Year:</strong> ${vehicle.inv_year}</p>
-        <p><strong>Price:</strong> $${vehicle.inv_price.toLocaleString()}</p>
-        <p><strong>Miles:</strong> ${vehicle.inv_miles.toLocaleString()}</p>
+        <p><strong>Price:</strong> $${Number(vehicle.inv_price).toLocaleString()}</p>
+        <p><strong>Miles:</strong> ${Number(vehicle.inv_miles).toLocaleString()}</p>
         <p><strong>Color:</strong> ${vehicle.inv_color}</p>
-        <p>${vehicle.inv_description}</p>
+        <p>${vehicle.inv_description}</p> 
       </div>
     </div>
   `;
-  return detail;
 }
 
-// Build classification grid
+// Build classification grid view
 async function buildClassificationGrid(data) {
   let grid = '<ul id="inv-display">';
   data.forEach(vehicle => {
@@ -58,4 +57,8 @@ async function buildClassificationGrid(data) {
   return grid;
 }
 
-module.exports = { getNav, buildVehicleDetail, buildClassificationGrid };
+module.exports = {
+  getNav,
+  buildVehicleDetail,
+  buildClassificationGrid
+};

@@ -1,5 +1,4 @@
-/* Mobile-first styles */
-
+/* ===== Base Styles ===== */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -25,6 +24,7 @@ nav {
 nav ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 nav li {
@@ -43,18 +43,71 @@ main {
   text-align: center;
 }
 
-.car-showcase {
-  margin-top: 2rem;
+/* ===== Classification Grid (Vehicle Listings) ===== */
+#inv-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
 }
 
-.car-showcase img {
+#inv-display li {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 250px;
+}
+
+#inv-display img {
   width: 100%;
-  max-width: 500px;
-  height: auto;
+  max-width: 400px;
+  height: 300px;
+  object-fit: cover;
   border-radius: 8px;
 }
 
-/* Media Query for larger screens */
+/* ===== Vehicle Detail View ===== */
+.vehicle-detail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.vehicle-detail img {
+  max-width: 100%;
+  height: auto;
+  flex: 1 1 300px;
+  border-radius: 8px;
+}
+
+.vehicle-detail div {
+  flex: 1 1 300px;
+}
+
+.vehicle-detail h2 {
+  font-size: 1.8rem;
+  margin-top: 0;
+}
+
+.vehicle-detail p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+/* ===== Utility ===== */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== Responsive Design ===== */
 @media screen and (min-width: 768px) {
   main {
     max-width: 900px;
@@ -69,39 +122,5 @@ main {
 
   nav li {
     margin: 0 20px;
-  }
-
-  .car-showcase {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .car-showcase p {
-    font-size: 1.2rem;
-  }
-}
-.vehicle-detail {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.vehicle-detail img {
-  max-width: 100%;
-  height: auto;
-}
-
-@media screen and (min-width: 768px) {
-  .vehicle-detail {
-    flex-direction: row;
-  }
-
-  .vehicle-detail img {
-    max-width: 50%;
-  }
-
-  .vehicle-detail div {
-    flex: 1;
   }
 }

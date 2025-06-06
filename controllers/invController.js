@@ -20,21 +20,29 @@ async function buildByClassificationId(req, res, next) {
 }
 
 async function buildByInventoryId(req, res, next) {
-  try {
-    const invId = parseInt(req.params.inv_id);
-    const data = await invModel.getVehicleById(invId);
-    const grid = await utilities.buildVehicleDetail(data);
-    const nav = await utilities.getNav();
-
-    res.render("./inventory/detail", {
-      title: `${data.inv_make} ${data.inv_model}`,
-      nav,
-      grid
-    });
-  } catch (error) {
-    next(error);
+    try {
+      const invId = parseInt(req.params.inv_id);
+      const data = await invModel.getVehicleById(invId);
+  
+      if (!data) {
+        throw new Error("Vehicle not found");
+      }
+  
+      const nav = await utilities.getNav();
+      const detail = await utilities.buildVehicleDetail(data);
+  
+      res.render("./inventory/details.ejs", {
+        title: `${data.inv_make} ${data.inv_model}`,
+        nav,
+        detail
+      });
+  
+    } catch (error) {
+      next(error);
+    }
   }
-}
+  
+  
 
 module.exports = {
   buildByClassificationId,
