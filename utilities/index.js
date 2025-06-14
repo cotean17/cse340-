@@ -9,6 +9,7 @@ async function getNav() {
     data.rows.forEach(row => {
       nav += `<li><a href="/inv/${row.classification_id}" title="View our ${row.classification_name} product line">${row.classification_name}</a></li>`;
     });
+    //nav += '<li><a href="/inv" title="Go to Inventory Management">Management</a></li>'; // ✅ Add this
     nav += '</ul>';
     return nav;
   } catch (error) {
@@ -16,6 +17,7 @@ async function getNav() {
     throw error;
   }
 }
+
 
 // Build vehicle detail view
 async function buildVehicleDetail(vehicle) {

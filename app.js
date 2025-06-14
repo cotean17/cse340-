@@ -1,5 +1,7 @@
 const express = require("express");
 const path = require("path");
+const session = require("express-session");
+const flash = require("connect-flash");
 const baseRoutes = require("./routes/baseRoute");
 const invRoutes = require("./routes/inventoryRoute");
 const utilities = require("./utilities");
@@ -8,18 +10,29 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Set view engine
+// Set up session and flash middleware FIRST
+app.use(session({
+  secret: "superSecret",
+  resave: false,
+  saveUninitialized: true,
+}));
+app.use(flash());
+
+// View engine setup
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// Serve static files
+// Static files
 app.use(express.static(path.join(__dirname, "public")));
+
+// Parse form data
+app.use(express.urlencoded({ extended: true }));
 
 // Use routes
 app.use("/", baseRoutes);
 app.use("/inv", invRoutes);
 
-// Error handler (500)
+// 500 error handler
 app.use(async (err, req, res, next) => {
   console.error(err.stack);
   const nav = await utilities.getNav();
@@ -30,7 +43,7 @@ app.use(async (err, req, res, next) => {
   });
 });
 
-// 404 handler (must be last)
+// 404 handler
 app.use(async (req, res) => {
   const nav = await utilities.getNav();
   res.status(404).render("partials/error", {
@@ -40,7 +53,7 @@ app.use(async (req, res) => {
   });
 });
 
-// Start server
+// ✅ Start server — this must be last
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`🚗 Server running at http://localhost:${port}`);
 });

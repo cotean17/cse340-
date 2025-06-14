@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+<main>
+  <h1>Vehicle Management</h1>
+
+  <% if (message.length > 0) { %>
+    <div class="flash"><%= message %></div>
+  <% } %>
+
+  <ul>
+    <li><a href="/inv/add-classification">Add New Classification</a></li>
+    <li><a href="/inv/add-inventory">Add New Vehicle</a></li>
+  </ul>
+</main>
+<%- include('../partials/footer') %>
