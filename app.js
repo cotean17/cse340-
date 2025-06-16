@@ -9,6 +9,11 @@ require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 5000;
+//w05 
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+const checkJWT = require("./middleware/checkJWT");
+app.use(checkJWT);
 
 // Set up session and flash middleware FIRST
 app.use(session({

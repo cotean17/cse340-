@@ -1,5 +1,16 @@
 <header>
-  
+
   <h1>CSE Motors</h1>
   <p>Where You Can Trust</p>
+
+   <% if (loggedin) { %>
+    <p>
+      Welcome, <a href="/account/management"><%= firstname %></a> |
+      <a href="/account/logout">Logout</a>
+    </p>
+  <% } else { %>
+    <p>
+      <a href="/account/login">My Account</a>
+    </p>
+  <% } %>
 </header>

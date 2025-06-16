@@ -6,8 +6,15 @@ body {
   color: #333;
   line-height: 1.6;
 }
+header a {
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 
 header,
+
 footer {
   background-color: #004d99;
   color: white;
