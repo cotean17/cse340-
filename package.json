@@ -19,6 +19,7 @@
   "homepage": "https://github.com/cotean17/cse340-#readme",
   "description": "",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.7",
     "dotenv": "^16.5.0",
