@@ -9,7 +9,7 @@ async function getNav() {
     data.rows.forEach(row => {
       nav += `<li><a href="/inv/${row.classification_id}" title="View our ${row.classification_name} product line">${row.classification_name}</a></li>`;
     });
-    //nav += '<li><a href="/inv" title="Go to Inventory Management">Management</a></li>'; // ✅ Add this
+
     nav += '</ul>';
     return nav;
   } catch (error) {
@@ -23,7 +23,7 @@ async function getNav() {
 async function buildVehicleDetail(vehicle) {
   return `
     <div class="vehicle-detail">
-      <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}">
+      <img src="${vehicle.inv_image}" alt="${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model} - full vehicle image">
       <div>
         <h2>${vehicle.inv_make} ${vehicle.inv_model}</h2>
         <p><strong>Year:</strong> ${vehicle.inv_year}</p>
@@ -36,22 +36,17 @@ async function buildVehicleDetail(vehicle) {
   `;
 }
 
-// Build classification grid view
+// Build classification grid view (clean version)
 async function buildClassificationGrid(data) {
   let grid = '<ul id="inv-display">';
   data.forEach(vehicle => {
     grid += `
       <li>
         <a href="/inv/detail/${vehicle.inv_id}" title="View ${vehicle.inv_make} ${vehicle.inv_model} details">
-          <img src="${vehicle.inv_thumbnail}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}">
+          <img src="${vehicle.inv_thumbnail}" alt="Thumbnail of ${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}">
+          <h2>${vehicle.inv_make} ${vehicle.inv_model}</h2>
         </a>
-        <div>
-          <h2>
-            <a href="/inv/detail/${vehicle.inv_id}" title="View ${vehicle.inv_make} ${vehicle.inv_model} details">
-              ${vehicle.inv_make} ${vehicle.inv_model}
-            </a>
-          </h2>
-        </div>
+
       </li>
     `;
   });

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><%- include('../partials/head') %></head>
+  <body>
+    <%- include('../partials/header') %>
+    <%- include('../partials/nav') %>
+
+    <main>
+      <h1>My Favorite Vehicles</h1>
+
+      <% if (favorites.length > 0) { %>
+        <ul>
+          <% favorites.forEach(fav => { %>
+            <li>
+              <a href="/inv/detail/<%= fav.inv_id %>">
+                <%= fav.inv_make %> <%= fav.inv_model %> - <%= fav.inv_year %>
+              </a>
+            </li>
+          <% }) %>
+        </ul>
+      <% } else { %>
+        <p>You have no favorite vehicles yet.</p>
+      <% } %>
+    </main>
+
+    <%- include('../partials/footer') %>
+  </body>
+</html>

@@ -8,15 +8,16 @@
     <%- include('../partials/nav') %>
 
     <main>
-      <h1>Account Management</h1>
+      <h1>My Account</h1>
 
       <% if (message.length > 0) { %>
         <div class="flash"><%= message %></div>
       <% } %>
 
+      <h2>Management</h2>
       <ul>
         <li><a href="/account/update">Update Account Info</a></li>
-
+        <li><a href="/account/favorites">View Favorites</a></li>
         <% if (account_type === "Employee" || account_type === "Admin") { %>
           <li><a href="/inv">Vehicle Management</a></li>
         <% } %>

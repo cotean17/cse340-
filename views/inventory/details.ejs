@@ -1,4 +1,5 @@
-</html>
+<!DOCTYPE html>
+<html lang="en">
 <%- include("../partials/head") %>
 <body>
     <%- include("../partials/header") %>
@@ -12,6 +13,14 @@
             <% } else { %>
                 <p>Vehicle details not available.</p>
         <% } %>
+        <% if (locals.loggedin) { %>
+            <form action="/favorites/add/<%= inv_id %>" method="POST">
+                <button type="submit">❤️ Add to Favorites</button>
+              </form>                           
+          <% } else { %>
+            <p><a href="/account/login">Log in</a> to add to favorites.</p>
+          <% } %>
+          
     </main>
     <%- include("../partials/footer") %>
 </body>

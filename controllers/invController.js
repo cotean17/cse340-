@@ -34,7 +34,8 @@ async function buildByInventoryId(req, res, next) {
       res.render("./inventory/details.ejs", {
         title: `${data.inv_make} ${data.inv_model}`,
         nav,
-        detail
+        detail,
+        inv_id: data.inv_id
       });
   
     } catch (error) {
