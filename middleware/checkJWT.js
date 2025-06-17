@@ -16,8 +16,12 @@ function checkJWT(req, res, next) {
     }
 
     res.locals.loggedin = true;
-    res.locals.firstname = decoded.account_firstname; // makes it available in views
-    res.locals.account_type = decoded.account_type; // for Task 3
+    res.locals.firstname = decoded.account_firstname;
+    res.locals.account_type = decoded.account_type;
+
+    // ✅ THIS LINE IS MISSING
+    res.locals.accountData = decoded;
+
     next();
   });
 }
